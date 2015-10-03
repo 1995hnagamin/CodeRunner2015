@@ -4,3 +4,4 @@ run
 .omakedb*
 data
 *.swp
+token
