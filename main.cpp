@@ -20,12 +20,13 @@ const int beam_width = 5;
 random_device rnd;
 
 int main() {
-  vector<Dat> window;
-  window.push_back({});
-  vector<pair<int,Dat>> nextgen;
+  vector<pair<int,Dat>> window, nextgen;
+  Dat v;
+  window.emplace_back(0, v);
   while (true) {
-    for (Dat cand_ : window) {
-      REP(i_, 15) REP(j_, 15) {
+    for (auto cand__ : window) {
+      auto cand_ = cand__.second;
+      REP(i_, 7) REP(j_, 7) {
         Dat cand = cand_;
         int i = 0, j = 0;
         while (i == j ||
@@ -47,14 +48,13 @@ int main() {
         }
       }
     }
+    nextgen.insert(nextgen.end(), window.begin(), window.end());
     if ((int)nextgen.size() > beam_width) {
       sort(nextgen.begin(), nextgen.end(), greater<pair<int,Dat>>());
       nextgen.resize(beam_width);
     }
-    window.clear();
-    for (pair<int,Dat> d:nextgen) {
-      window.push_back(d.second);
-    }
+    window = nextgen;
+    nextgen.clear();
   }
   return 0;
 }
