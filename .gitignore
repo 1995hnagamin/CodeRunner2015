@@ -1,0 +1,6 @@
+*.omc
+run
+*.o
+.omakedb*
+data
+*.swp

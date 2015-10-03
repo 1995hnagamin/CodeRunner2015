@@ -1,0 +1,6 @@
+SRCS = main
+TARGET = run
+
+CXXFLAGS += -Wall --std=c++11
+
+.DEFAULT: $(CXXProgram $(TARGET), $(SRCS))
