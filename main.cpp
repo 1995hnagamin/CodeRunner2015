@@ -33,6 +33,11 @@ int main() {
             find(cand.begin(), cand.end(), j) != cand.end()) {
           i = rnd() % 1000, j = rnd() % 1000;
         }
+        if (i > j) {
+          int t = i;
+          i = j;
+          j = t;
+        }
         cand.push_back(i);
         cand.push_back(j);
         string query = stringfy(cand);

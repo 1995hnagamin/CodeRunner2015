@@ -4,7 +4,7 @@
 #include<cstdlib>
 #include<unistd.h>
 #include<fstream>
-//#include"file.cpp"
+#include"file.cpp"
 
 using namespace std;
 
@@ -19,6 +19,7 @@ void keep(string url, string res) {
   os.open(filename, ios::app);
   os  << url << "\t" << res << endl << endl;
   cout  << url << "\t" << res << endl << endl;
+  os.close();
 }
 
 string submit(vector<pair<string,string>> args) {
@@ -28,10 +29,8 @@ string submit(vector<pair<string,string>> args) {
     url += "&" + arg.first + "=" + arg.second;
   }
 
-//  ifstream ifs;
-//  ifs.open("data");
-//  int score = judge(url, ifs);
-//  if (score >= 0) return to_string(score);
+  int score = judge(url);
+  if (score >= 0) return to_string(score);
 
   wait(1.01);
   string res = query(url);
