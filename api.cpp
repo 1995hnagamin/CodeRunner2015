@@ -4,6 +4,7 @@
 #include<cstdlib>
 #include<unistd.h>
 #include<fstream>
+//#include"file.cpp"
 
 using namespace std;
 
@@ -26,6 +27,12 @@ string submit(vector<pair<string,string>> args) {
   for (pair<string,string> arg:args) {
     url += "&" + arg.first + "=" + arg.second;
   }
+
+//  ifstream ifs;
+//  ifs.open("data");
+//  int score = judge(url, ifs);
+//  if (score >= 0) return to_string(score);
+
   wait(1.01);
   string res = query(url);
   keep(url, res);
